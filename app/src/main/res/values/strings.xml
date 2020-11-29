@@ -15,4 +15,12 @@
     <string name="SignUp">SIGN UP</string>
     <string name="register">REGISTER</string>
     <string name="logout">LOGOUT</string>
+
+    <string name="titleFragmentHome">Home</string>
+    <string name="titleFragmentPesanan">Pesanan</string>
+    <string name="titleFragmentFavorite">Favoritku</string>
+    <string name="titleFragmentProfile">Profile</string>
+    <string name="titleFragmentMap">Map</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
