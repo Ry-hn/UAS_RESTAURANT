@@ -1,6 +1,7 @@
 package com.ryohandoko.restaurantuas.viewmodel;
 
 import android.app.Application;
+import android.content.Intent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.lifecycle.LiveData;
 
 import com.ryohandoko.restaurantuas.Model.User;
 import com.ryohandoko.restaurantuas.repository.UserRepository;
+import com.ryohandoko.restaurantuas.view.RegisterActivity;
 
 public class LoginViewModel extends AndroidViewModel {
 
@@ -23,13 +25,18 @@ public class LoginViewModel extends AndroidViewModel {
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
-        repository = UserRepository.getInstance(getApplication());
+        repository = new UserRepository(application);
         isLoading.set(false);
     }
 
     public void signIn(View view) {
         isLoading.set(true);
         repository.login(this.email.get(), this.password.get());
+    }
+
+    public void SignUp(View view) {
+        Intent i = new Intent(view.getContext(), RegisterActivity.class);
+        view.getContext().startActivity(i);
     }
 
     @Override
@@ -62,4 +69,8 @@ public class LoginViewModel extends AndroidViewModel {
     public LiveData<String> getErrorMessage() { return repository.getErrorMessage(); }
 
     public LiveData<User> getUserMutableLiveData() { return repository.getUserMutableLiveData(); }
+
+    public UserRepository getRepository() {
+        return repository;
+    }
 }

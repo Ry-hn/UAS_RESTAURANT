@@ -8,8 +8,7 @@
     <string name="hintEmail">EMAIL</string>
     <string name="hintPassword">PASSWORD</string>
     <string name="hintForgot">Forgot Password?</string>
-    <string name="hintFirst">FIRST NAME</string>
-    <string name="hintLast">LAST NAME</string>
+    <string name="hintFirst">NAME</string>
     <string name="hintPhone">PHONE NUMBER</string>
 
     <string name="SignIn">SIGN IN</string>

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.ryohandoko.restaurantuas.MainActivity;
@@ -52,6 +51,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.executePendingBindings();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.setIsLoading(false);
     }
 
     private void loadActivity() {

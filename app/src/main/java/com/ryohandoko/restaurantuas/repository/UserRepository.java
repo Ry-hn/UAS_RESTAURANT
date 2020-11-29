@@ -3,7 +3,6 @@ package com.ryohandoko.restaurantuas.repository;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -21,28 +20,20 @@ public class UserRepository {
 
     private static final String TAG = "userrepository";
 
-    private static UserRepository instace;
-    private ApiUserInterface apiService;
+    private final ApiUserInterface apiService;
 
-    private MutableLiveData<User> userMutableLiveData;
-    private MutableLiveData<String> errorMessage;
+    private final MutableLiveData<User> userMutableLiveData;
+    private final MutableLiveData<String> errorMessage;
 
     // untuk shared pref
-    private Application application;
+    private final Application application;
 
-    private UserRepository(Application app) {
+    public UserRepository(Application app) {
         apiService = ApiClient.getClient().create(ApiUserInterface.class);
         userMutableLiveData = new MutableLiveData<>();
 
         errorMessage = new MutableLiveData<>();
         application = app;
-    }
-
-    public static UserRepository getInstance(Application app) {
-        if (instace == null)
-            instace = new UserRepository(app);
-
-        return instace;
     }
 
     public void login(String email, String password) {
