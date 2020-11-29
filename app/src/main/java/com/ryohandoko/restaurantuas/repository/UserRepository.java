@@ -12,7 +12,6 @@ import com.ryohandoko.restaurantuas.API.ApiClient;
 import com.ryohandoko.restaurantuas.API.Interface.ApiUserInterface;
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
 import com.ryohandoko.restaurantuas.Model.User;
-import com.ryohandoko.restaurantuas.viewmodel.LoginViewModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,12 +27,13 @@ public class UserRepository {
     private MutableLiveData<User> userMutableLiveData;
     private MutableLiveData<String> errorMessage;
 
+    // untuk shared pref
     private Application application;
-    private String message;
 
     private UserRepository(Application app) {
         apiService = ApiClient.getClient().create(ApiUserInterface.class);
         userMutableLiveData = new MutableLiveData<>();
+
         errorMessage = new MutableLiveData<>();
         application = app;
     }
@@ -45,53 +45,37 @@ public class UserRepository {
         return instace;
     }
 
-    public LiveData<User> login(String email, String password) {
+    public void login(String email, String password) {
 
         Call<UserResponse> request = apiService.userLogin(email, password);
         
         request.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                //response 200 ada body(), selain itu nda ada makanya nanti npe
                 if(response.code() == 200) {
-                    message = response.body().getMessage();
 
-                    if(message.equals("Authenticated")) {
+                    if(response.body().getMessage().equals("Authenticated")) {
                         userMutableLiveData.setValue(response.body().getUser());
-                        Log.i(TAG, "onResponse: user  " + response.body().getUser().getNama_user() + " berhasil didapatkan");
 
                         //menyimpan id dan token kedalam shared pref
                         saveIdToken(userMutableLiveData.getValue().getId(),
                                         response.body().getAccess_token());
                     }
-                    errorMessage.setValue(response.body().getMessage());
+
+                    errorMessage.postValue(response.body().getMessage());
                 }
                 else {
-                    Log.i(TAG, "onResponse: error code -> " + response.code());
-                    errorMessage.setValue(Integer.toString(response.code()));
+                    errorMessage.postValue(Integer.toString(response.code()));
                 }
-
-                Log.i(TAG, "login: error msg" + errorMessage.getValue());
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                message = "500";
-                errorMessage.setValue("500");
-
-                Log.i(TAG, "login: error msg" + errorMessage.getValue());
-                Log.i(TAG, "onFailure: " + t.getMessage());
+                // gagal server langsung kasih kode 500
+                errorMessage.postValue("500");
             }
         });
-
-        return userMutableLiveData;
-    }
-
-    public MutableLiveData<String> getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(MutableLiveData<String> errorMessage) {
-        this.errorMessage = errorMessage;
     }
 
     private void saveIdToken(String id, String token) {
@@ -103,4 +87,8 @@ public class UserRepository {
 
         editor.apply();
     }
+
+    public LiveData<String> getErrorMessage() { return errorMessage; }
+
+    public LiveData<User> getUserMutableLiveData() { return userMutableLiveData; }
 }

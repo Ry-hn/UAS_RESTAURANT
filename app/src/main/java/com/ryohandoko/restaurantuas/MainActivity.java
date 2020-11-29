@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
         }
-        Toast.makeText(this, "SUDAH LOGIN", Toast.LENGTH_SHORT).show();
-
-        Log.i("MAIN", "onCreate: token" + sp.getString("token",""));
+        else {
+            Toast.makeText(this, "SUDAH LOGIN", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
