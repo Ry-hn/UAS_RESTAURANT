@@ -12,15 +12,8 @@ import com.ryohandoko.restaurantuas.R;
 
 public class NotificationUtil {
     public static String CHANNEL_ID = "Channel 1";
-    private static NotificationUtil instance = null;
 
-    private NotificationUtil() {}
-
-    public static NotificationUtil getInstance() {
-        if(instance == null)
-            instance = new NotificationUtil();
-        return instance;
-    }
+    public NotificationUtil() {}
 
     public void createNotification(Context context) {
         CharSequence name = CHANNEL_ID;
@@ -44,6 +37,7 @@ public class NotificationUtil {
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
 
         Intent notificationIntent = new Intent(context, clazz);
+
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         builder.setContentIntent(contentIntent);

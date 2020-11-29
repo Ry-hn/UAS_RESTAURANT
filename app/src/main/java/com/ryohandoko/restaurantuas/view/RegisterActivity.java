@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
                 viewModel.setIsLoading(!viewModel.getIsLoading().get());
 
                 if(s.equals("Register Success")) {
-                    NotificationUtil.getInstance().addNotification(RegisterActivity.this, "Registrasi Berhasil", "Silahkan Verifikasi ID lewat email", RegisterActivity.class);
+                    new NotificationUtil().addNotification(RegisterActivity.this, "Registrasi Berhasil", "Silahkan Verifikasi ID lewat email", LoginActivity.class);
                     finish();
                 }
                 else {
