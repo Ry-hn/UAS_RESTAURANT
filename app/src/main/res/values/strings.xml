@@ -15,6 +15,7 @@
     <string name="SignUp">SIGN UP</string>
     <string name="register">REGISTER</string>
     <string name="logout">LOGOUT</string>
+    <string name="update">UPDATE</string>
 
     <string name="titleFragmentHome">Home</string>
     <string name="titleFragmentPesanan">Pesanan</string>

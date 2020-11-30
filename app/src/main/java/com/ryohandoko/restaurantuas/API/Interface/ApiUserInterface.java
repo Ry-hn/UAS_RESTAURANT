@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiUserInterface {
@@ -26,14 +27,26 @@ public interface ApiUserInterface {
                                     @Field("nama_user") String nama_user,
                                     @Field("telepon") String telepon);
 
-    @GET("api/user")
-    Call<UserResponse> getCurrentUser(@Header("Authorization") String authHeader);
-
-
     @POST("api/user/image")
     Call<UserResponse> uploadImage(@Header("Authorization") String authHeader, @Field("id") String id);
 
 
     @POST("api/logout")
     Call<UserResponse> logout(@Header("Authorization") String authHeader);
+
+    @GET("api/user")
+    Call<UserResponse> getCurrentUser(@Header("Authorization") String authHeader);
+
+    @PUT("api/user/{id}")
+    @FormUrlEncoded
+    Call<UserResponse> updateUser(@Header("Authorization") String authHeader, @Path("id") String id,
+                                  @Field("nama_user") String nama, @Field("telepon") String telepon);
+
+    @PUT("api/user/{id}")
+    @FormUrlEncoded
+    Call<UserResponse> updatePassword(@Header("Authorization") String authHeader,
+                                  @Path("id") String id, @Field("oldPassword") String oldPassword,
+                                  @Field("newPassword") String newPassword);
+
+
 }

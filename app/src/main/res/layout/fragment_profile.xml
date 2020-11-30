@@ -51,10 +51,10 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutNama"
+            android:id="@+id/layoutEmail"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,27 +63,15 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/hintFirst"
-                android:text="@{ProfileVM.name}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutEmail"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutNama">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
                 android:hint="@string/hintEmail"
+                android:editable="false"
                 android:text="@{ProfileVM.email}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutNama"
             android:layout_width="250dp"
+            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,22 +80,41 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/hintPhone"
-                android:text="@{ProfileVM.telepon}"/>
+                android:hint="@string/hintFirst"
+                android:text="@={ProfileVM.name}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@{profileVM.phone}"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.501"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.584" />-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutNama">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintPhone"
+                android:text="@={ProfileVM.telepon}"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update"
+            app:backgroundTint="#90EE90"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            app:layout_constraintBottom_toTopOf="@id/btnLogout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            android:onClick="@{ProfileView::Update}"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="80dp"

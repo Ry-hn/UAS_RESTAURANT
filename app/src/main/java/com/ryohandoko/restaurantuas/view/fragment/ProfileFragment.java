@@ -62,27 +62,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onChanged(String s) {
 
-                Log.i("GEDHANG", "onChanged: String: " + s);
-
                 viewModel.setIsLoading(false);
-
+                Log.i("GEDHANG", "onChanged: string: " + s);
                 switch(s) {
-                    case "Successfully logged out":
-                        removeSharedPreferences();
-                        break;
-                    case "Success":
-                        User user = viewModel.getUserLiveData().getValue();
-
-                        viewModel.setGambar(user.getGambar());
-                        viewModel.setName(user.getNama_user());
-                        viewModel.setEmail(user.getEmail());
-                        viewModel.setTelepon(user.getTelepon());
-
-                        Log.i("GEDHANG", "onChanged: name" + viewModel.getName());
-                        break;
-                    default:
-                        Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
-                        break;
+                    case "Successfully logged out": removeSharedPreferences(); break;
+                    case "Update Profile Success":
+                        Toast.makeText(getContext(), "Data berhasil disimpan!", Toast.LENGTH_SHORT).show();
+                    case "Success": loadData(); break;
+                    default: Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show(); break;
                 }
             }
         });
@@ -90,6 +77,18 @@ public class ProfileFragment extends Fragment {
         binding.executePendingBindings();
         return binding.getRoot();
     }
+
+    private void loadData() {
+        User user = viewModel.getUserLiveData().getValue();
+
+        viewModel.setName(user.getNama_user());
+        viewModel.setEmail(user.getEmail());
+        viewModel.setTelepon(user.getTelepon());
+
+        if(!viewModel.getGambar().get().equals(user.getGambar()))
+            viewModel.setGambar(user.getGambar());
+    }
+
 
     @BindingAdapter("ProfileImage")
     public static void loadImage(ImageView view, String imgUrl) {
@@ -109,6 +108,36 @@ public class ProfileFragment extends Fragment {
         viewModel.setIsLoading(false);
     }
 
+
+    public void LogOut(View view) {
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        viewModel.LogOut();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Logout ?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
+    }
+
+    public void Update(View view) {
+        if(viewModel.isAllFieldInputted()) {
+//            Log.i("GEDHANG", "DATA: " + viewModel.getName().get());
+            viewModel.update();
+        }
+        else Toast.makeText(getContext(), "Input tidak benar!", Toast.LENGTH_SHORT).show();
+    }
 
     public void Capture(View view) {
         if(checkPermission()) {
@@ -151,27 +180,7 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    public void LogOut(View view) {
-        
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        viewModel.LogOut();
-                        break;
 
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        break;
-                }
-            }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Logout ?").setPositiveButton("Yes", dialogClickListener)
-                .setNegativeButton("No", dialogClickListener).show();
-
-    }
 
     private void removeSharedPreferences() {
         sp = getActivity().getSharedPreferences("SECRET", Context.MODE_PRIVATE);

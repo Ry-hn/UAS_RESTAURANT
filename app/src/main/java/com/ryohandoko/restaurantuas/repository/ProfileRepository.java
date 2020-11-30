@@ -49,16 +49,19 @@ public class ProfileRepository {
         });
     }
 
-    public void updateUser(String token, String nama, String telepon) {
+    public void updateUser(String token, String id, String nama, String telepon) {
         String auth = "Bearer " + token;
-        Call<UserResponse> request = apiService.getCurrentUser(auth);
+        Call<UserResponse> request = apiService.updateUser(auth, id, nama, telepon);
 
         request.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if(response.code() == 200) {
-
+                    userMutableLiveData.postValue(response.body().getUser());
+                    errorMessage.postValue(response.body().getMessage());
+                    Log.i("GEDHANG", "onResponse: update masuk sini" + userMutableLiveData);
                 }
+                else errorMessage.postValue("400");
             }
 
             @Override

@@ -3,6 +3,8 @@ package com.ryohandoko.restaurantuas.viewmodel;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.AndroidViewModel;
@@ -23,17 +25,33 @@ public class ProfileViewModel extends AndroidViewModel {
     private final ObservableField<String> telepon = new ObservableField<>("");
     private final ObservableField<Boolean> isLoading = new ObservableField<>(false);
 
+    private String token, id;
 
     public ProfileViewModel(Application app) {
         super(app);
         sp = app.getSharedPreferences("SECRET", Context.MODE_PRIVATE);
         repository = new ProfileRepository();
         isLoading.set(true);
-        repository.getUser(sp.getString("token", ""));
+
+        token = sp.getString("token", "");
+        id = sp.getString("id", "");
+
+        repository.getUser(token);
     }
 
     public void LogOut() {
         repository.logout(sp.getString("token", ""));
+    }
+
+    public void update() {
+        Log.i("UDPATE", "update: name: " + getName().get() + " telepon: " + getTelepon().get());
+        repository.updateUser(token, id, getName().get(), getTelepon().get());
+    }
+
+    public boolean isAllFieldInputted() {
+        return !TextUtils.isEmpty(name.get()) &&
+                !TextUtils.isEmpty(email.get()) &&
+                !TextUtils.isEmpty(telepon.get());
     }
 
     public void Capture() {

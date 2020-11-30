@@ -63,7 +63,6 @@ public class RegisterViewModel extends ViewModel {
                 !TextUtils.isEmpty(telepon.get());
     }
 
-
     @Override
     protected void onCleared() { super.onCleared(); }
 
