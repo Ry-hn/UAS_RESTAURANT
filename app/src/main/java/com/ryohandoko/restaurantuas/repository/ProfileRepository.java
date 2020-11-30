@@ -1,7 +1,5 @@
 package com.ryohandoko.restaurantuas.repository;
 
-import android.app.Application;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;

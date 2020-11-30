@@ -2,8 +2,6 @@ package com.ryohandoko.restaurantuas.API.Interface;
 
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
 
-import java.io.File;
-
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
