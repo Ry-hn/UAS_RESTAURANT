@@ -11,125 +11,134 @@
        <variable name="ProfileView" type="com.ryohandoko.restaurantuas.view.fragment.ProfileFragment" />
    </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:background="#FFF"
-        android:layout_height="match_parent"
-        tools:context=".view.fragments.ProfileFragment"
-        android:padding="8dp">
-
-        <!-- TODO: Update blank fragment layout -->
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/userPhoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:civ_border_width="6dp"
-            app:civ_shadow="true"
-            app:civ_shadow_color="#8BC34A"
-            app:civ_shadow_radius="10"
-            android:src="@drawable/ic_person"
-            app:ProfileImage="@{ProfileVM.gambar}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="500dp"/>
-
-        <ImageButton
-            android:id="@+id/captureButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="420dp"
-            android:background="@drawable/ic_baseline_add_circle_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{ProfileView::Capture}"/>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutEmail"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userPhoto"
-            android:layout_marginBottom="400dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintEmail"
-                android:editable="false"
-                android:text="@{ProfileVM.email}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutNama"
-            android:layout_width="250dp"
-            android:layout_marginTop="15dp"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutEmail">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintFirst"
-                android:text="@={ProfileVM.name}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutNama">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/hintPhone"
-                android:text="@={ProfileVM.telepon}"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="#FFF"
             android:layout_height="wrap_content"
-            android:text="@string/update"
-            app:backgroundTint="#90EE90"
-            android:layout_marginStart="80dp"
-            android:layout_marginEnd="80dp"
-            app:layout_constraintBottom_toTopOf="@id/btnLogout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            android:onClick="@{ProfileView::Update}"/>
+            tools:context=".view.fragments.ProfileFragment"
+            android:padding="8dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="80dp"
-            android:text="@string/logout"
-            app:backgroundTint="#dc143c"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            android:onClick="@{ProfileView::LogOut}"/>
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/userPhoto"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:civ_border_width="6dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#8BC34A"
+                app:civ_shadow_radius="10"
+                android:src="@drawable/ic_person"
+                app:ProfileImage="@{ProfileVM.gambar}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="500dp"/>
 
-        <include
-            android:id="@+id/here_must_be_id_or_no_databinding"
-            android:visibility="@{ProfileVM.isLoading ? View.VISIBLE : View.GONE}"
-            layout="@layout/loading_state" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/captureButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginBottom="420dp"
+                android:background="@drawable/ic_baseline_add_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{ProfileView::Capture}"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutEmail"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userPhoto"
+                android:layout_marginBottom="400dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hintEmail"
+                    android:editable="false"
+                    android:text="@{ProfileVM.email}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutNama"
+                android:layout_width="250dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutEmail">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hintFirst"
+                    android:text="@={ProfileVM.name}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilipun"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutNama">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hintPhone"
+                    android:text="@={ProfileVM.telepon}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/update"
+                app:backgroundTint="#90EE90"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="80dp"
+                app:layout_constraintBottom_toTopOf="@id/btnLogout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:onClick="@{ProfileView::Update}"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="80dp"
+                android:text="@string/logout"
+                app:backgroundTint="#dc143c"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:onClick="@{ProfileView::LogOut}"/>
+
+            <include
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilipun"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/here_must_be_id_or_no_databinding"
+                android:visibility="@{ProfileVM.isLoading ? View.VISIBLE : View.GONE}"
+                layout="@layout/loading_state" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>

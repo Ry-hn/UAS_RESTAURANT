@@ -33,7 +33,6 @@ public class ProfileViewModel extends AndroidViewModel {
         super(app);
         sp = app.getSharedPreferences("SECRET", Context.MODE_PRIVATE);
         repository = new ProfileRepository();
-        isLoading.set(true);
 
         token = sp.getString("token", "");
         id = sp.getString("id", "");
@@ -42,11 +41,12 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     public void LogOut() {
+        isLoading.set(true);
         repository.logout(sp.getString("token", ""));
     }
 
     public void update() {
-        Log.i("UDPATE", "update: name: " + getName().get() + " telepon: " + getTelepon().get());
+        isLoading.set(true);
         repository.updateUser(token, id, getName().get(), getTelepon().get());
     }
 
@@ -57,6 +57,7 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     public void Capture(File file) {
+        isLoading.set(true);
         repository.uploadImage(file, token, id);
     }
 

@@ -69,6 +69,7 @@ public class ProfileFragment extends Fragment {
             public void onChanged(String s) {
 
                 viewModel.setIsLoading(false);
+
                 Log.i("GEDHANG", "onChanged: string: " + s);
                 switch(s) {
                     case "Successfully logged out": removeSharedPreferences(); break;
