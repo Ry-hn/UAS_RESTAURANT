@@ -1,6 +1,7 @@
 package com.ryohandoko.restaurantuas.Model;
 
 import com.google.gson.annotations.SerializedName;
+import com.ryohandoko.restaurantuas.API.ApiClient;
 
 public class User {
 
@@ -63,7 +64,10 @@ public class User {
     }
 
     public String getGambar() {
-        return gambar;
+        if(gambar != null && !gambar.isEmpty()) {
+            return ApiClient.BASE_URL + "api/user/image/" + gambar;
+        }
+        return "";
     }
 
     public void setGambar(String gambar) {

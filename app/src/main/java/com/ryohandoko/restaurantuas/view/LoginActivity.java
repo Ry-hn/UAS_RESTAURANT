@@ -46,9 +46,11 @@ public class LoginActivity extends AppCompatActivity {
                     case "421":
                         Toast.makeText(getApplication(), "Akun Belum diaktifkan", Toast.LENGTH_SHORT).show();
                         break;
-                    default:
+                    case "401":
                         Toast.makeText(getApplication(), "Username / password salah", Toast.LENGTH_SHORT).show();
                         break;
+                    default:
+                        Toast.makeText(LoginActivity.this, "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -1,15 +1,14 @@
 package com.ryohandoko.restaurantuas.API;
 
+import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    public static final String BASE_URL = "http://192.168.18.4:8000/api/";
+    public static final String BASE_URL = "http://192.168.18.4:8000/";
     public static Retrofit retrofit = null;
-
-
 
     public static Retrofit getClient() {
 

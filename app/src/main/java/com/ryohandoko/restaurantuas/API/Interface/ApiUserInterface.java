@@ -8,16 +8,17 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiUserInterface {
 
-    @POST("login")
+    @POST("api/login")
     @FormUrlEncoded
     Call<UserResponse> userLogin(@Field("email") String email,
                                     @Field("password") String password);
 
-    @POST("register")
+    @POST("api/register")
     @FormUrlEncoded
     Call<UserResponse> userRegister(@Field("email") String email,
                                     @Field("password") String password,
@@ -25,9 +26,14 @@ public interface ApiUserInterface {
                                     @Field("nama_user") String nama_user,
                                     @Field("telepon") String telepon);
 
-    @GET("/api/user")
+    @GET("api/user")
     Call<UserResponse> getCurrentUser(@Header("Authorization") String authHeader);
 
-    @POST("logout")
+
+    @POST("api/user/image")
+    Call<UserResponse> uploadImage(@Header("Authorization") String authHeader, @Field("id") String id);
+
+
+    @POST("api/logout")
     Call<UserResponse> logout(@Header("Authorization") String authHeader);
 }

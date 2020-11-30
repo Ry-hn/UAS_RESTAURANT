@@ -30,7 +30,6 @@ public class ProfileRepository {
 
     public void getUser(String token) {
         String auth = "Bearer " + token;
-        Log.i("GEDHANG", "TOKEN: " + auth);
         Call<UserResponse> request = apiService.getCurrentUser(auth);
 
         request.enqueue(new Callback<UserResponse>() {
@@ -38,24 +37,39 @@ public class ProfileRepository {
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if(response.code() == 200) {
                     userMutableLiveData.postValue(response.body().getUser());
-                    Log.i("GEDHANG", "onResponse: " + response.body().getUser().getEmail());
+                    errorMessage.postValue(response.body().getMessage());
                 }
                 else errorMessage.postValue("400");
-
-                Log.i("GEDHANG", "onResponse: CALL" + call.toString());
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 errorMessage.postValue("500");
-                Log.i("GEDHANG", "onResponse: " + t.getMessage());
+            }
+        });
+    }
+
+    public void updateUser(String token, String nama, String telepon) {
+        String auth = "Bearer " + token;
+        Call<UserResponse> request = apiService.getCurrentUser(auth);
+
+        request.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if(response.code() == 200) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                errorMessage.postValue("500");
             }
         });
     }
 
     public void logout(String token) {
         String auth = "Bearer " + token;
-        Log.i("GEDHANG", "TOKEN: " + auth);
 
         Call<UserResponse> request = apiService.logout(auth);
 

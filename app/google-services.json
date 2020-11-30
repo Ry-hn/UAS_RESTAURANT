@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "637746221356",
+    "firebase_url": "https://uas-pbp.firebaseio.com",
+    "project_id": "uas-pbp",
+    "storage_bucket": "uas-pbp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637746221356:android:bc904c770022dfc759dc89",
+        "android_client_info": {
+          "package_name": "com.ryohandoko.restaurantuas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637746221356-df98hq6rcmolrffgitie284ditmsqa6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVGdQt_o0buQVBtkXBi_Ln0J0amkcZuWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637746221356-df98hq6rcmolrffgitie284ditmsqa6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

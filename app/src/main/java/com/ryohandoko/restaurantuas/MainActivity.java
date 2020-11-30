@@ -8,9 +8,14 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.ryohandoko.restaurantuas.util.NotificationUtil;
 import com.ryohandoko.restaurantuas.view.fragment.FavoriteFragment;
 import com.ryohandoko.restaurantuas.view.fragment.HomeFragment;
 import com.ryohandoko.restaurantuas.view.fragment.MapFragment;
@@ -52,15 +57,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        new NotificationUtil().createNotification(this);
+        FirebaseMessaging.getInstance().subscribeToTopic("news")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "FCM berhasil";
+                        if(!task.isSuccessful())
+                            msg = "FCM gagal";
+                        Log.i("FCM", msg);
+                    }
+                });
+
     }
 
     private boolean loadFragment(Fragment fragment) {
         if(fragment != null) {
-            //R.id.fragment = fragment container di layout
-            getSupportFragmentManager().beginTransaction()
+            //R.id.fragment = fragment container di
+
+//            getSupportFragmentManager().popBackStack();
+
+            getSupportFragmentManager()
+                    .beginTransaction()
                     .replace(R.id.fragment, fragment)
-                    .addToBackStack(null)
                     .commit();
+
             return true;
         }
         return false;

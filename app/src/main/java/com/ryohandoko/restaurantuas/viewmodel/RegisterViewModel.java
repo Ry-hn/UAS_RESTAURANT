@@ -17,11 +17,11 @@ import com.ryohandoko.restaurantuas.util.UserValidator;
 public class RegisterViewModel extends ViewModel {
 
     private final RegisterRepository repository;
-    public ObservableField<String> name = new ObservableField<>("");
-    public ObservableField<String> email = new ObservableField<>("");
-    public ObservableField<String> telepon = new ObservableField<>("");
-    public ObservableField<String> password = new ObservableField<>("");
-    public ObservableField<Boolean> isLoading = new ObservableField<>(false);
+    private final ObservableField<String> name = new ObservableField<>("");
+    private final ObservableField<String> email = new ObservableField<>("");
+    private final ObservableField<String> telepon = new ObservableField<>("");
+    private final ObservableField<String> password = new ObservableField<>("");
+    private final ObservableField<Boolean> isLoading = new ObservableField<>(false);
 
     public RegisterViewModel() {
         super();
@@ -67,22 +67,20 @@ public class RegisterViewModel extends ViewModel {
     @Override
     protected void onCleared() { super.onCleared(); }
 
-    public String getName() { return name.get(); }
+    public ObservableField<String> getName() { return name; }
     public void setName(String name) { this.name.set(name);}
 
-    public String getTelepon() { return telepon.get(); }
+    public ObservableField<String> getTelepon() { return telepon; }
     public void setTelepon(String telepon) { this.telepon.set(telepon);}
 
-    public String getEmail() {
-        return email.get();
+    public ObservableField<String> getEmail() {
+        return email;
     }
     public void setEmail(String email) {
         this.email.set(email);
     }
 
-    public String getPassword() {
-        return password.get();
-    }
+    public ObservableField<String> getPassword() { return password; }
     public void setPassword(String password) {
         this.password.set(password);
     }

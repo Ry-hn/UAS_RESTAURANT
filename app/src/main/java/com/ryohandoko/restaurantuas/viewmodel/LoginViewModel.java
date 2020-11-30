@@ -15,9 +15,9 @@ public class LoginViewModel extends AndroidViewModel {
     private final UserRepository repository;
 
     //variable ini digunakan untuk data binding view
-    public ObservableField<String> email = new ObservableField<>("");
-    public ObservableField<String> password = new ObservableField<>("");
-    public ObservableField<Boolean> isLoading = new ObservableField<>(false);
+    private ObservableField<String> email = new ObservableField<>("");
+    private ObservableField<String> password = new ObservableField<>("");
+    private ObservableField<Boolean> isLoading = new ObservableField<>(false);
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
@@ -33,16 +33,16 @@ public class LoginViewModel extends AndroidViewModel {
     @Override
     protected void onCleared() { super.onCleared(); }
 
-    public String getEmail() {
-        return email.get();
+    public ObservableField<String> getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email.set(email);
     }
 
-    public String getPassword() {
-        return password.get();
+    public ObservableField<String> getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {

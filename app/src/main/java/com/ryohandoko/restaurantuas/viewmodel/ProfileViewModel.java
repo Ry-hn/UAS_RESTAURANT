@@ -3,12 +3,12 @@ package com.ryohandoko.restaurantuas.viewmodel;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.view.View;
 
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.ryohandoko.restaurantuas.Model.User;
 import com.ryohandoko.restaurantuas.repository.ProfileRepository;
 
 public class ProfileViewModel extends AndroidViewModel {
@@ -17,21 +17,22 @@ public class ProfileViewModel extends AndroidViewModel {
     private final ProfileRepository repository;
     private SharedPreferences sp;
 
-    public ObservableField<String> name = new ObservableField<>("");
-    public ObservableField<String> email = new ObservableField<>("");
-    public ObservableField<String> gambar = new ObservableField<>("");
-    public ObservableField<String> telepon = new ObservableField<>("");
-    public ObservableField<Boolean> isLoading = new ObservableField<>(false);
+    private final ObservableField<String> name = new ObservableField<>("");
+    private final ObservableField<String> email = new ObservableField<>("");
+    private final ObservableField<String> gambar = new ObservableField<>("");
+    private final ObservableField<String> telepon = new ObservableField<>("");
+    private final ObservableField<Boolean> isLoading = new ObservableField<>(false);
+
 
     public ProfileViewModel(Application app) {
         super(app);
         sp = app.getSharedPreferences("SECRET", Context.MODE_PRIVATE);
         repository = new ProfileRepository();
-
+        isLoading.set(true);
         repository.getUser(sp.getString("token", ""));
     }
 
-    public void LogOut(View view) {
+    public void LogOut() {
         repository.logout(sp.getString("token", ""));
     }
 
@@ -42,26 +43,26 @@ public class ProfileViewModel extends AndroidViewModel {
     @Override
     protected void onCleared() { super.onCleared(); }
 
-    public String getName() { return name.get(); }
-    public void setName(String name) { this.name.set(name);}
+    public ObservableField<String> getName() { return name; }
+    public void setName(String name) {
+        this.name.set(name);
+    }
 
-    public String getTelepon() { return telepon.get(); }
-    public void setTelepon(String telepon) { this.telepon.set(telepon);}
+    public ObservableField<String> getTelepon() { return telepon; }
+    public void setTelepon(String telepon) {
+        this.telepon.set(telepon);
+    }
 
-    public String getEmail() {
-        return email.get();
+    public ObservableField<String> getEmail() {
+        return email;
     }
     public void setEmail(String email) {
         this.email.set(email);
     }
 
-    public String getGambar() {
-        return gambar.get();
-    }
-    public void setGambar(String gambar) {
-        this.gambar.set(gambar);
-    }
-    
+    public ObservableField<String> getGambar() { return gambar; }
+    public void setGambar(String gambar) { this.gambar.set(gambar); }
+
     public ObservableField<Boolean> getIsLoading() {
         return isLoading;
     }
@@ -70,5 +71,6 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     public LiveData<String> getErrorMessage() { return repository.getErrorMessage(); }
+    public LiveData<User> getUserLiveData() { return repository.getUserMutableLiveData(); }
 
 }
