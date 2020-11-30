@@ -2,15 +2,20 @@ package com.ryohandoko.restaurantuas.API.Interface;
 
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
 
+import java.io.File;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface ApiUserInterface {
 
@@ -28,7 +33,9 @@ public interface ApiUserInterface {
                                     @Field("telepon") String telepon);
 
     @POST("api/user/image")
-    Call<UserResponse> uploadImage(@Header("Authorization") String authHeader, @Field("id") String id);
+    @Multipart
+    Call<UserResponse> uploadImage(@Header("Authorization") String authHeader,
+                                   @Part("id") RequestBody id, @Part MultipartBody.Part gambar);
 
 
     @POST("api/logout")

@@ -12,6 +12,11 @@ import com.ryohandoko.restaurantuas.API.Interface.ApiUserInterface;
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
 import com.ryohandoko.restaurantuas.Model.User;
 
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,6 +74,33 @@ public class ProfileRepository {
                 errorMessage.postValue("500");
             }
         });
+    }
+
+    public void uploadImage(File file, String token, String id) {
+        String auth = "Bearer " + token;
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("gambar",
+                    file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+
+        RequestBody idUser = RequestBody.create(MediaType.parse("text/plain"), id);
+
+        Call<UserResponse> request = apiService.uploadImage(auth, idUser, filePart);
+
+        request.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if(response.code() == 200) {
+                    userMutableLiveData.postValue(response.body().getUser());
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                errorMessage.postValue("500");
+            }
+        });
+
     }
 
     public void logout(String token) {

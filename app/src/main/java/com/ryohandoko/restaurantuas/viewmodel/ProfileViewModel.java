@@ -13,6 +13,8 @@ import androidx.lifecycle.LiveData;
 import com.ryohandoko.restaurantuas.Model.User;
 import com.ryohandoko.restaurantuas.repository.ProfileRepository;
 
+import java.io.File;
+
 public class ProfileViewModel extends AndroidViewModel {
 
     private static final String TAG = "ProfileViewModel";
@@ -54,8 +56,8 @@ public class ProfileViewModel extends AndroidViewModel {
                 !TextUtils.isEmpty(telepon.get());
     }
 
-    public void Capture() {
-
+    public void Capture(File file) {
+        repository.uploadImage(file, token, id);
     }
 
     @Override

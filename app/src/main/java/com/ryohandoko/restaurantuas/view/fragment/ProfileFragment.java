@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +38,10 @@ import com.ryohandoko.restaurantuas.R;
 import com.ryohandoko.restaurantuas.databinding.FragmentProfileBinding;
 import com.ryohandoko.restaurantuas.view.LoginActivity;
 import com.ryohandoko.restaurantuas.viewmodel.ProfileViewModel;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class ProfileFragment extends Fragment {
 
@@ -66,6 +72,7 @@ public class ProfileFragment extends Fragment {
                 Log.i("GEDHANG", "onChanged: string: " + s);
                 switch(s) {
                     case "Successfully logged out": removeSharedPreferences(); break;
+                    case "Update Image Success":
                     case "Update Profile Success":
                         Toast.makeText(getContext(), "Data berhasil disimpan!", Toast.LENGTH_SHORT).show();
                     case "Success": loadData(); break;
@@ -84,9 +91,7 @@ public class ProfileFragment extends Fragment {
         viewModel.setName(user.getNama_user());
         viewModel.setEmail(user.getEmail());
         viewModel.setTelepon(user.getTelepon());
-
-        if(!viewModel.getGambar().get().equals(user.getGambar()))
-            viewModel.setGambar(user.getGambar());
+        viewModel.setGambar(user.getGambar());
     }
 
 
@@ -107,7 +112,6 @@ public class ProfileFragment extends Fragment {
         super.onResume();
         viewModel.setIsLoading(false);
     }
-
 
     public void LogOut(View view) {
 
@@ -162,9 +166,42 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST && resultCode != 0) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
 
+            File file = savebitmap(photo);
+            viewModel.Capture(file);
 
+            Log.i("GEDHANG", "onActivityResult: gambar dikirim");
+        }
+    }
 
+    private File savebitmap(Bitmap bmp) {
+        String extStorageDirectory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
+        OutputStream outStream = null;
+        // String temp = null;
+
+        File file = new File(extStorageDirectory, "temp.png");
+
+        if (file.exists()) {
+            file.delete();
+            file = new File(extStorageDirectory, "temp.png");
+        }
+
+        try {
+            outStream = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+            outStream.flush();
+            outStream.close();
+
+        } catch (Exception e) {
+            Log.i("GEDHANG", "savebitmap: " + e.getMessage());
+            return null;
+        }
+
+        Log.i("GEDHANG", "savebitmap: file name: " + file.getName());
+
+        return file;
     }
 
     @Override
@@ -179,8 +216,6 @@ public class ProfileFragment extends Fragment {
                 break;
         }
     }
-
-
 
     private void removeSharedPreferences() {
         sp = getActivity().getSharedPreferences("SECRET", Context.MODE_PRIVATE);
