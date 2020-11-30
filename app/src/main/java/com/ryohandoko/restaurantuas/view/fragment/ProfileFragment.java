@@ -35,11 +35,10 @@ public class ProfileFragment extends Fragment {
 
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
 
-        sp = getActivity().getSharedPreferences("SECRET", Context.MODE_PRIVATE);
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         binding.setLifecycleOwner(this);
         binding.setProfileVM(viewModel);
+        binding.setProfileView(this);
 
         viewModel.getErrorMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -47,15 +46,8 @@ public class ProfileFragment extends Fragment {
                 // berhentikan progress bar
                 viewModel.setIsLoading(!viewModel.getIsLoading().get());
 
-                if(s.equals("Successfully logged out")) {
-                    SharedPreferences.Editor editor = sp.edit();
-
-                    editor.remove("id");
-                    editor.remove("token");
-
-                    editor.apply();
-                    loadActivity();
-                }
+                if(s.equals("Successfully logged out")) removeSharedPreferences();
+                else Toast.makeText(getContext(), "Gagal Logout!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -63,7 +55,23 @@ public class ProfileFragment extends Fragment {
         return binding.getRoot();
     }
 
-    public void loadActivity() {
+    public void Capture(View view) {
+
+    }
+
+
+    private void removeSharedPreferences() {
+        sp = getActivity().getSharedPreferences("SECRET", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.remove("id");
+        editor.remove("token");
+
+        editor.apply();
+        loadActivity();
+    }
+
+    private void loadActivity() {
         Intent i = new Intent(getActivity(), LoginActivity.class);
         getActivity().startActivity(i);
         getActivity().finish();

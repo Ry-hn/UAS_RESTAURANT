@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.ryohandoko.restaurantuas.R;
@@ -26,7 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         binding.setLifecycleOwner(this);
+
         binding.setRegVm(viewModel);
+        binding.setRegView(this);
 
         viewModel.getErrorMessage().observe(this, new Observer<String>() {
             @Override
@@ -45,5 +48,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         binding.executePendingBindings();
+    }
+
+    public void createUser(View view) {
+        if(viewModel.isAllFieldInputted())
+            viewModel.createUser();
+        else
+            Toast.makeText(this, "Isikan semua field dengan benar", Toast.LENGTH_SHORT).show();
     }
 }

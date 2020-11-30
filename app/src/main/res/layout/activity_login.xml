@@ -12,6 +12,10 @@
             name="loginVM"
             type="com.ryohandoko.restaurantuas.viewmodel.LoginViewModel" />
 
+        <variable
+            name="loginView"
+            type="com.ryohandoko.restaurantuas.view.LoginActivity" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,13 +78,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:onClick="@{loginVM::signIn}"
+                android:onClick="@{loginView::signIn}"
                 android:text="@string/SignIn" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{loginVM::SignUp}"
+                android:onClick="@{loginView::SignUp}"
                 android:text="@string/SignUp"
                 app:backgroundTint="@color/teal_200" />
         </LinearLayout>

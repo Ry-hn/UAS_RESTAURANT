@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.ryohandoko.restaurantuas.MainActivity;
@@ -27,7 +28,9 @@ public class LoginActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.setLifecycleOwner(this);
+
         binding.setLoginVM(viewModel);
+        binding.setLoginView(this);
 
         viewModel.getErrorMessage().observe(this, new Observer<String>() {
             @Override
@@ -49,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
         binding.executePendingBindings();
     }
 
@@ -63,5 +65,14 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(i);
         finish();
+    }
+
+    public void signIn(View view) {
+        viewModel.signIn();
+    }
+
+    public void SignUp(View view) {
+        Intent i = new Intent(this, RegisterActivity.class);
+        startActivity(i);
     }
 }

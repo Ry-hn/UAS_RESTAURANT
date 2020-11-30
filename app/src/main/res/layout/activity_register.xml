@@ -8,6 +8,7 @@
         <import type="android.view.View" />
         <import type="com.ryohandoko.restaurantuas.util.UserValidator" />
         <variable name="regVm" type="com.ryohandoko.restaurantuas.viewmodel.RegisterViewModel" />
+        <variable name="regView" type="com.ryohandoko.restaurantuas.view.RegisterActivity" />
     </data>
 
     <RelativeLayout
@@ -100,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:onClick="@{regVm::createUser}"
+                android:onClick="@{regView::createUser}"
                 android:text="@string/register" />
         </LinearLayout>
 

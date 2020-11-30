@@ -7,15 +7,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.ryohandoko.restaurantuas.view.LoginActivity;
 import com.ryohandoko.restaurantuas.view.fragment.FavoriteFragment;
 import com.ryohandoko.restaurantuas.view.fragment.HomeFragment;
 import com.ryohandoko.restaurantuas.view.fragment.MapFragment;

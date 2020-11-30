@@ -3,8 +3,6 @@ package com.ryohandoko.restaurantuas.viewmodel;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableField;
@@ -31,15 +29,9 @@ public class RegisterViewModel extends ViewModel {
         isLoading.set(false);
     }
 
-    public void createUser(View view) {
-
-        if(isAllFieldInputted()) {
-            isLoading.set(true);
-            repository.register(this.email.get(), this.name.get(), this.password.get(), this.telepon.get(), "USER");
-        }
-        else {
-            Toast.makeText(view.getContext(), "Isikan semua field dengan benar", Toast.LENGTH_SHORT).show();
-        }
+    public void createUser() {
+        isLoading.set(true);
+        repository.register(this.email.get(), this.name.get(), this.password.get(), this.telepon.get(), "USER");
     }
 
     @BindingAdapter({"validation", "errorMsg"})

@@ -12,6 +12,8 @@ import androidx.lifecycle.LiveData;
 import com.ryohandoko.restaurantuas.repository.ProfileRepository;
 
 public class ProfileViewModel extends AndroidViewModel {
+
+    private static final String TAG = "ProfileViewModel";
     private final ProfileRepository repository;
     private SharedPreferences sp;
 
@@ -31,6 +33,10 @@ public class ProfileViewModel extends AndroidViewModel {
 
     public void LogOut(View view) {
         repository.logout(sp.getString("token", ""));
+    }
+
+    public void Capture() {
+
     }
 
     @Override
