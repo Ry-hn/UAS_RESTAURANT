@@ -1,9 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AdminActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="MENU ADMIN"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Selamat datang di Menu ADMIN"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="3">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvCreateuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/choco"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_baseline_create_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/create_title"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvShowListUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/choco"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/ic_baseline_format_list_numbered_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/show_list_title"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="3">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvCreateProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/choco"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_baseline_food_bank_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/create_product"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvShowListProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/choco"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:background="@drawable/ic_baseline_format_list_numbered_24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/show_list_product"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </GridLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantUAS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".view.admin.CreateProductActivity"></activity>
+        <activity android:name=".view.admin.CreateUserActivity" />
+        <activity android:name=".AdminActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

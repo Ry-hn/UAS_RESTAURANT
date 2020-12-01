@@ -11,6 +11,16 @@
     <string name="hintFirst">NAME</string>
     <string name="hintPhone">PHONE NUMBER</string>
 
+    <string name="show_list_title">Show List User</string>
+    <string name="create_title">Create User</string>
+    <string name="search_hint">Search User</string>
+    <string name="edit_title">Edit User</string>
+
+    <string name="show_list_product">Show List Product</string>
+    <string name="create_product">Create Product</string>
+    <string name="search_Product">Search Product</string>
+    <string name="edit_produt">Edit Product</string>
+
     <string name="SignIn">SIGN IN</string>
     <string name="SignUp">SIGN UP</string>
     <string name="register">REGISTER</string>
