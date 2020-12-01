@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ryohandoko.restaurantuas">
+    package="com.ryohandoko.restaurantuas" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,11 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantUAS"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".view.admin.CreateProductActivity"></activity>
+        android:usesCleartextTraffic="true" >
+        <activity android:name=".view.admin.ShowProductActivity" >
+        </activity>
+        <activity android:name=".view.admin.CreateProductActivity" />
         <activity android:name=".view.admin.CreateUserActivity" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +38,7 @@
 
         <service
             android:name=".util.MessagingService"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
