@@ -43,15 +43,23 @@ public class UserRepository {
         request.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+
                 //response 200 ada body(), selain itu nda ada makanya nanti npe
                 if(response.code() == 200) {
 
                     if(response.body().getMessage().equals("Authenticated")) {
                         userMutableLiveData.setValue(response.body().getUser());
 
-                        //menyimpan id dan token kedalam shared pref
-                        saveIdToken(userMutableLiveData.getValue().getId(),
-                                        response.body().getAccess_token());
+                        if(response.body().getUser().getRole().equalsIgnoreCase("user")) {
+
+                            //menyimpan id dan token kedalam shared pref khusus user
+                            saveIdToken(userMutableLiveData.getValue().getId(),
+                                    response.body().getAccess_token());
+                        }
+                        else {
+                            errorMessage.postValue("ADMIN");
+                            return;
+                        }
                     }
 
                     errorMessage.postValue(response.body().getMessage());

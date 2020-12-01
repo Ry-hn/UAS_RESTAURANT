@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ryohandoko.restaurantuas.AdminActivity;
 import com.ryohandoko.restaurantuas.MainActivity;
 import com.ryohandoko.restaurantuas.R;
 import com.ryohandoko.restaurantuas.databinding.ActivityLoginBinding;
@@ -39,8 +40,12 @@ public class LoginActivity extends AppCompatActivity {
                 viewModel.setIsLoading(!viewModel.getIsLoading().get());
 
                 switch (s) {
+                    case "ADMIN":
+                        loadActivity(AdminActivity.class);
+                        Toast.makeText(getApplication(), "ADMIN Login", Toast.LENGTH_SHORT).show();
+                        break;
                     case "Authenticated":
-                        loadActivity();
+                        loadActivity(MainActivity.class);
                         Toast.makeText(getApplication(), "Berhasil Login", Toast.LENGTH_SHORT).show();
                         break;
                     case "421":
@@ -63,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         viewModel.setIsLoading(false);
     }
 
-    private void loadActivity() {
-        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+    private void loadActivity(Class<?> clazz) {
+        Intent i = new Intent(LoginActivity.this,clazz);
         startActivity(i);
         finish();
     }
