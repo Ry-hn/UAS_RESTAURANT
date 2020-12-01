@@ -17,7 +17,7 @@ public interface ApiItemInterface {
     @FormUrlEncoded
     Call<ItemResponse> createProduct(@Field("nama_product") String nama,
                                      @Field("deskripsi_product") String deskripsi,
-                                     @Field("harga_product") double harga,
+                                     @Field("harga_product") String harga,
                                      @Field("gambar_product") String url);
 
 }

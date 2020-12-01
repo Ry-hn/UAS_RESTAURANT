@@ -2,7 +2,7 @@ package com.ryohandoko.restaurantuas.API.Response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.ryohandoko.restaurantuas.Model.Item;
+import com.ryohandoko.restaurantuas.model.Item;
 
 import java.util.List;
 

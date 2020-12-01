@@ -1,8 +1,11 @@
-package com.ryohandoko.restaurantuas.Model;
+package com.ryohandoko.restaurantuas.model;
+
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Item {
+public class Item extends BaseObservable {
 
     @SerializedName("id")
     private String id;
@@ -14,11 +17,13 @@ public class Item {
     private String deskripsi_product;
 
     @SerializedName("harga_product")
-    private double harga_product;
+    private String harga_product;
 
-    @SerializedName("gambar")
+    @SerializedName("gambar_product")
     private String gambar;
 
+
+    @Bindable
     public String getId() {
         return id;
     }
@@ -27,6 +32,7 @@ public class Item {
         this.id = id;
     }
 
+    @Bindable
     public String getNama_product() {
         return nama_product;
     }
@@ -43,11 +49,11 @@ public class Item {
         this.deskripsi_product = deskripsi_product;
     }
 
-    public double getHarga_product() {
+    public String getHarga_product() {
         return harga_product;
     }
 
-    public void setHarga_product(double harga_product) {
+    public void setHarga_product(String harga_product) {
         this.harga_product = harga_product;
     }
 

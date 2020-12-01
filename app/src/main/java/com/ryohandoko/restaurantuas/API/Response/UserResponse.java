@@ -2,7 +2,7 @@ package com.ryohandoko.restaurantuas.API.Response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.ryohandoko.restaurantuas.Model.User;
+import com.ryohandoko.restaurantuas.model.User;
 
 public class UserResponse {
 

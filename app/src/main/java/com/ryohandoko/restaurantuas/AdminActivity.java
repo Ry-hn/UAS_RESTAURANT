@@ -12,6 +12,7 @@ import android.view.View;
 import com.ryohandoko.restaurantuas.repository.ProductRepository;
 import com.ryohandoko.restaurantuas.view.admin.CreateProductActivity;
 import com.ryohandoko.restaurantuas.view.admin.CreateUserActivity;
+import com.ryohandoko.restaurantuas.view.admin.ShowProductActivity;
 
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +30,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
 
         createUser.setOnClickListener(this);
         createProduct.setOnClickListener(this);
+        showProduct.setOnClickListener(this);
     }
 
     private void loadActivity(Class<?> clazz) {
@@ -41,6 +43,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
             case R.id.cvCreateuser: loadActivity(CreateUserActivity.class); break;
             case R.id.cvCreateProduct: loadActivity(CreateProductActivity.class); break;
+            case R.id.cvShowListProduct: loadActivity(ShowProductActivity.class); break;
         }
     }
 }

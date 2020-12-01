@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.ryohandoko.restaurantuas.API.ApiClient;
 import com.ryohandoko.restaurantuas.API.Interface.ApiItemInterface;
 import com.ryohandoko.restaurantuas.API.Response.ItemResponse;
-import com.ryohandoko.restaurantuas.Model.Item;
+import com.ryohandoko.restaurantuas.model.Item;
 
 import java.util.List;
 
@@ -43,12 +43,13 @@ public class ProductRepository {
 
             @Override
             public void onFailure(Call<ItemResponse> call, Throwable t) {
+                Log.i("CREATEPRODUCT", "onFailure: "  + t.getMessage());
                 errorMessage.postValue("500");
             }
         });
     }
 
-    public void createProduct(String nama, String deskripsi, double harga, String url) {
+    public void createProduct(String nama, String deskripsi, String harga, String url) {
         Call<ItemResponse> request = apiService.createProduct(nama, deskripsi, harga, url);
 
         request.enqueue(new Callback<ItemResponse>() {
@@ -68,5 +69,5 @@ public class ProductRepository {
     }
 
     public LiveData<String> getErrorMessage() { return errorMessage; }
-    public LiveData<List<Item>> getListProductLiveData() { return ListProductLiveData; }
+    public LiveData<List<Item>> getListProductsLiveData() { return ListProductLiveData; }
 }
