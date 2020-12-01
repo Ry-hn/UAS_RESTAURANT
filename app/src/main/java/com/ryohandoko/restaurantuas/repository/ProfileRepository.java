@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.ryohandoko.restaurantuas.API.ApiClient;
 import com.ryohandoko.restaurantuas.API.Interface.ApiUserInterface;
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
-import com.ryohandoko.restaurantuas.Model.User;
+import com.ryohandoko.restaurantuas.model.User;
 
 import java.io.File;
 

@@ -22,7 +22,7 @@
     <string name="edit_produt">Edit Product</string>
 
     <string name="SignIn">SIGN IN</string>
-    <string name="SignUp">SIGN UP</string>
+    <string name="SignUp">Belum Punya Akun? SIGN UP</string>
     <string name="register">REGISTER</string>
     <string name="logout">LOGOUT</string>
     <string name="update">UPDATE</string>

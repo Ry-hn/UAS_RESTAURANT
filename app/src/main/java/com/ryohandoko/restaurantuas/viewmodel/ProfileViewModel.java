@@ -9,7 +9,7 @@ import androidx.databinding.ObservableField;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.ryohandoko.restaurantuas.Model.User;
+import com.ryohandoko.restaurantuas.model.User;
 import com.ryohandoko.restaurantuas.repository.ProfileRepository;
 
 import java.io.File;

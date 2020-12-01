@@ -1,5 +1,7 @@
 package com.ryohandoko.restaurantuas.viewmodel;
 
+import android.text.TextUtils;
+
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -25,7 +27,14 @@ public class CreateProductViewModel extends ViewModel {
     public void create() {
         isLoading.set(true);
         repository.createProduct(namaProduct.get(), deskripsiProduct.get(),
-                                    Double.parseDouble(hargaProduct.get()), urlGambar.get());
+                                    hargaProduct.get(), urlGambar.get());
+    }
+
+    public boolean isAllFieldInputted() {
+        return !TextUtils.isEmpty(namaProduct.get()) &&
+                !TextUtils.isEmpty(deskripsiProduct.get()) &&
+                !TextUtils.isEmpty(hargaProduct.get()) &&
+                !TextUtils.isEmpty(urlGambar.get());
     }
 
     public ObservableField<String> getNamaProduct() { return namaProduct; }

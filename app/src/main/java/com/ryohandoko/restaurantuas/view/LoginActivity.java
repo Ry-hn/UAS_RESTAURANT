@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 

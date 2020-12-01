@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
 
         <variable
             name="createProductVM"
@@ -167,7 +168,13 @@
                 android:onClick="@{createProductView::createProduct}"
                 android:textColor="@color/black" />
 
+
         </RelativeLayout>
+
+        <include
+            android:id="@+id/here_must_be_id_or_no_databinding"
+            android:visibility="@{createProductVM.isLoading ? View.VISIBLE : View.GONE}"
+            layout="@layout/loading_state" />
 
     </RelativeLayout>
 </layout>

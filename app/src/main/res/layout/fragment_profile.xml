@@ -29,13 +29,13 @@
                 app:civ_shadow="true"
                 app:civ_shadow_color="#8BC34A"
                 app:civ_shadow_radius="10"
-                android:src="@drawable/ic_person"
-                app:ProfileImage="@{ProfileVM.gambar}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginBottom="500dp"/>
+                app:ProfileImage="@{ProfileVM.gambar}"
+                android:layout_marginBottom="500dp"
+                android:src="@drawable/ic_person" />
 
             <ImageButton
                 android:id="@+id/captureButton"

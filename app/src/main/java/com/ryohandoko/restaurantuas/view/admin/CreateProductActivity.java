@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class CreateProductActivity extends AppCompatActivity {
             @Override
             public void onChanged(String s) {
                 viewModel.setIsLoading(!viewModel.getIsLoading().get());
-
+                Log.i("INPUT", "onChanged: string " + s);
                 switch (s) {
                     case "Add Product Success":
                         Toast.makeText(CreateProductActivity.this, "Product Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
@@ -54,7 +55,8 @@ public class CreateProductActivity extends AppCompatActivity {
     public void back(View view) { onBackPressed(); }
 
     public void createProduct(View view) {
-        viewModel.create();
+        if(viewModel.isAllFieldInputted()) viewModel.create();
+        else Toast.makeText(this, "Isikan Semua Data!", Toast.LENGTH_SHORT).show();
     }
 
 }

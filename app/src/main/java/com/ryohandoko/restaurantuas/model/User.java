@@ -1,4 +1,4 @@
-package com.ryohandoko.restaurantuas.Model;
+package com.ryohandoko.restaurantuas.model;
 
 import com.google.gson.annotations.SerializedName;
 import com.ryohandoko.restaurantuas.API.ApiClient;

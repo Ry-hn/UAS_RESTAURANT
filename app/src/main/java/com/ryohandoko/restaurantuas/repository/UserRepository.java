@@ -10,7 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.ryohandoko.restaurantuas.API.ApiClient;
 import com.ryohandoko.restaurantuas.API.Interface.ApiUserInterface;
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
-import com.ryohandoko.restaurantuas.Model.User;
+import com.ryohandoko.restaurantuas.model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
