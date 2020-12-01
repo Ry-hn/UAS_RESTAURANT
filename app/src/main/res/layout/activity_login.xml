@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".view.LoginActivity">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,12 +42,6 @@
                 app:civ_shadow_radius="5" />
 
 
-            <!--            <com.google.android.material.button.MaterialButton-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:onClick="@{loginView::SignUp}"-->
-            <!--                android:text="@string/SignUp"-->
-            <!--                app:backgroundTint="@color/teal_200" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -57,6 +51,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -64,6 +59,11 @@
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="8dp">
+
+                <include
+                    android:id="@+id/here_must_be_id_or_no_databinding"
+                    android:visibility="@{loginVM.isLoading ? View.VISIBLE : View.GONE}"
+                    layout="@layout/loading_state" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -141,9 +141,6 @@
 
         </LinearLayout>
 
-        <!--        <include-->
-        <!--            android:id="@+id/here_must_be_id_or_no_databinding"-->
-        <!--            android:visibility="@{loginVM.isLoading ? View.VISIBLE : View.GONE}"-->
-        <!--            layout="@layout/loading_state" />-->
+
     </LinearLayout>
 </layout>

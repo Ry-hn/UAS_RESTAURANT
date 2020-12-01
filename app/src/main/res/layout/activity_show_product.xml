@@ -62,13 +62,13 @@
                 android:orientation="horizontal">
 
                 <SearchView
-                    android:id="@+id/searchUser"
+                    android:id="@+id/searchProduct"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:iconifiedByDefault="false"
-                    android:queryHint=""></SearchView>
+                    android:queryHint="Search"></SearchView>
             </LinearLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout

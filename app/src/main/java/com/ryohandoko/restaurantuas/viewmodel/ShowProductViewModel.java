@@ -12,7 +12,6 @@ import java.util.List;
 public class ShowProductViewModel extends ViewModel {
     private ProductRepository repository;
 
-    private ObservableField<String> searchField = new ObservableField<>("");
     private ObservableField<Boolean> isLoading = new ObservableField<>(false);
 
     public ShowProductViewModel() {
@@ -28,10 +27,6 @@ public class ShowProductViewModel extends ViewModel {
     public LiveData<String> getErrorMessage() {
         return repository.getErrorMessage();
     }
-
-    public ObservableField<String> getSearchField() { return searchField; }
-
-    public void setSearchField(String searchField) { this.searchField.set(searchField); }
 
     public ObservableField<Boolean> getIsLoading() { return isLoading; }
 
