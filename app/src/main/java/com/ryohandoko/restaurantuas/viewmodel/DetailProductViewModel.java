@@ -32,6 +32,10 @@ public class DetailProductViewModel extends ViewModel {
         repository.getProductById(id);
     }
 
+    public void removeProduct(String id) {
+        repository.hapusProduct(id);
+    }
+
     public ObservableField<String> getId() {
         return id;
     }

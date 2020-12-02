@@ -94,6 +94,26 @@ public class ProductRepository {
         });
     }
 
+    public void hapusProduct(String id) {
+        Call<ItemResponse> request = apiService.deleteProduct(id);
+
+        request.enqueue(new Callback<ItemResponse>() {
+            @Override
+            public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
+                if(response.code() == 200) {
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<ItemResponse> call, Throwable t) {
+                errorMessage.postValue("500");
+                Log.i("DELETEPRODUCT", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
 
     public LiveData<String> getErrorMessage() { return errorMessage; }
     public LiveData<List<Item>> getListProductsLiveData() { return ListProductLiveData; }

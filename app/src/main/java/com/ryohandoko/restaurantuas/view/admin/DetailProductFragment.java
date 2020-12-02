@@ -1,5 +1,7 @@
 package com.ryohandoko.restaurantuas.view.admin;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -39,6 +41,7 @@ public class DetailProductFragment extends DialogFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_product, container, false);
         binding.setLifecycleOwner(this);
         binding.setVM(viewModel);
+        binding.setView(this);
 
         getProduct();
 
@@ -52,6 +55,9 @@ public class DetailProductFragment extends DialogFragment {
                     case "Retrieve Product Success":
                         loadData();
                         break;
+                    case "Delete Product Success":
+                        dismiss();
+                        break;
                 }
             }
         });
@@ -59,6 +65,30 @@ public class DetailProductFragment extends DialogFragment {
         binding.executePendingBindings();
 
         return binding.getRoot();
+    }
+
+    public void BtnHapus(View view) {
+        String id = getArguments().getString("id", "");
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        viewModel.removeProduct(id);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        dismiss();
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Hapus data ini ?").setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
     }
 
     private void getProduct() {

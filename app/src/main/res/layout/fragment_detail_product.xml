@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="view"
+            type="com.ryohandoko.restaurantuas.view.admin.DetailProductFragment" />
+
+        <variable
             name="VM"
             type="com.ryohandoko.restaurantuas.viewmodel.DetailProductViewModel" />
     </data>
@@ -116,13 +120,15 @@
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal">
                 <com.google.android.material.button.MaterialButton
-
+                    android:backgroundTint="#ff0000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="50dp"
+                    android:onClick="@{view::BtnHapus}"
                     android:text="DELETE"/>
 
                 <com.google.android.material.button.MaterialButton
+                    android:backgroundTint="#00aa00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SAVE"/>
