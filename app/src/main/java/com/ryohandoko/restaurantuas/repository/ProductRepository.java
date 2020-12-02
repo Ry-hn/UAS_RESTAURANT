@@ -21,11 +21,15 @@ public class ProductRepository {
     private final MutableLiveData<String> errorMessage;
     private final MutableLiveData<List<Item>> ListProductLiveData;
 
+    private final MutableLiveData<Item> ProductLiveData;
+
+
     public ProductRepository() {
         this.apiService = ApiClient.getClient().create(ApiItemInterface.class);
 
         this.errorMessage = new MutableLiveData<>();
         this.ListProductLiveData = new MutableLiveData<>();
+        this.ProductLiveData = new MutableLiveData<>();
     }
 
     public void getProducts() {
@@ -68,6 +72,30 @@ public class ProductRepository {
         });
     }
 
+    public void getProductById(String id) {
+        Call<ItemResponse> request = apiService.getProductById(id);
+
+        request.enqueue(new Callback<ItemResponse>() {
+            @Override
+            public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
+                if(response.code() == 200) {
+                    ProductLiveData.postValue(response.body().getItem());
+
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<ItemResponse> call, Throwable t) {
+                errorMessage.postValue("500");
+                Log.i("RETRIEVEPRODUCT", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
     public LiveData<String> getErrorMessage() { return errorMessage; }
     public LiveData<List<Item>> getListProductsLiveData() { return ListProductLiveData; }
+    public LiveData<Item> getProductLiveData() { return ProductLiveData; }
 }

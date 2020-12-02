@@ -16,6 +16,10 @@ public class ItemResponse {
     @Expose
     private List<Item> listItems = null;
 
+    @SerializedName("item")
+    @Expose
+    private Item item = null;
+
     public String getMessage() { return message; }
 
     public void setMessage(String message) { this.message = message; }
@@ -23,4 +27,12 @@ public class ItemResponse {
     public List<Item> getListItems() { return listItems; }
 
     public void setListItems(List<Item> listItems) { this.listItems = listItems; }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 }

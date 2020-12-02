@@ -94,17 +94,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    @BindingAdapter("ProfileImage")
-    public static void loadImage(ImageView view, String imgUrl) {
-        Log.i("GLIDE", "loadImage: " + imgUrl);
-        Glide.with(view.getContext())
-                .applyDefaultRequestOptions(new RequestOptions()
-                        .placeholder(R.drawable.bebek_vector))
-                .load(imgUrl)
-                .apply(RequestOptions.skipMemoryCacheOf(true))
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
-                .into(view);
-    }
+
 
     @Override
     public void onResume() {

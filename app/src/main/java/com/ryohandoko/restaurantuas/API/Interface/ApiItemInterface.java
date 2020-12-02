@@ -7,6 +7,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiItemInterface {
 
@@ -19,5 +20,8 @@ public interface ApiItemInterface {
                                      @Field("deskripsi_product") String deskripsi,
                                      @Field("harga_product") String harga,
                                      @Field("gambar_product") String url);
+
+    @GET("api/product/{id}")
+    Call<ItemResponse> getProductById(@Path("id") String id);
 
 }

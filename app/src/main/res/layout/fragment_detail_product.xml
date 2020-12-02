@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.admin.DetailProductFragment">
+
+    <data>
+
+        <variable
+            name="VM"
+            type="com.ryohandoko.restaurantuas.viewmodel.DetailProductViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/gambarProduct"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                app:ProfileImage="@{VM.url}"
+                tools:src="@drawable/bebek_vector" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/footer"
+                android:layout_below="@id/gambarProduct"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="ID">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:enabled="false"
+                        android:text="@{VM.id}"
+                        android:layout_height="match_parent">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Product">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:text="@{VM.nama}"
+                        android:layout_height="match_parent">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Deskripsi Product">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:text="@{VM.deskripsi}"
+                        android:layout_height="match_parent">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga Product">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:text="@{VM.harga}"
+                        android:layout_height="match_parent">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Gambar Product">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:text="@{VM.url}"
+                        android:layout_height="match_parent">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:text="DELETE"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SAVE"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

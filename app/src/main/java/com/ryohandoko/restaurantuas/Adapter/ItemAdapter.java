@@ -1,6 +1,7 @@
 package com.ryohandoko.restaurantuas.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,10 +9,13 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ryohandoko.restaurantuas.model.Item;
 import com.ryohandoko.restaurantuas.databinding.AdapterProductAdminBinding;
+import com.ryohandoko.restaurantuas.view.admin.DetailProductFragment;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +49,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         // this works
         holder.itemView.setOnClickListener( v -> {
+            FragmentManager manager = ((AppCompatActivity) context).getSupportFragmentManager();
+            DetailProductFragment dialog = new DetailProductFragment();
+            dialog.show(manager, "dialog");
 
+            Bundle args = new Bundle();
+            args.putString("id", item.getId());
+            dialog.setArguments(args);
         });
     }
 
