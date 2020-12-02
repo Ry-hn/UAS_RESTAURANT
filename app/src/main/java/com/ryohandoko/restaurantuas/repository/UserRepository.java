@@ -36,7 +36,7 @@ public class UserRepository {
         application = app;
     }
 
-    public void login(String email, String password) {
+    public LiveData<User> login(String email, String password) {
 
         Call<UserResponse> request = apiService.userLogin(email, password);
         
@@ -75,6 +75,8 @@ public class UserRepository {
                 errorMessage.postValue("500");
             }
         });
+
+        return userMutableLiveData;
     }
 
     private void saveIdToken(String id, String token) {

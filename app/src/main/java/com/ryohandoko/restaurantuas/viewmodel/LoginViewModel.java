@@ -15,12 +15,17 @@ public class LoginViewModel extends AndroidViewModel {
     private final UserRepository repository;
 
     //variable ini digunakan untuk data binding view
-    private ObservableField<String> email = new ObservableField<>("");
-    private ObservableField<String> password = new ObservableField<>("");
-    private ObservableField<Boolean> isLoading = new ObservableField<>(false);
+    private ObservableField<String> email;
+    private ObservableField<String> password;
+    private ObservableField<Boolean> isLoading;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
+
+        email = new ObservableField<>("");
+        password = new ObservableField<>("");
+        isLoading = new ObservableField<>(false);
+
         repository = new UserRepository(application);
         isLoading.set(false);
     }

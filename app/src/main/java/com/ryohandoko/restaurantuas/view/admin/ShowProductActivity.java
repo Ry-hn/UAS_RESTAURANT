@@ -49,8 +49,14 @@ public class ShowProductActivity extends AppCompatActivity {
         swipeRefreshLayout = binding.getRoot().findViewById(R.id.swipeRefresh);
         shimmerFrameLayout = binding.getRoot().findViewById(R.id.shimmerLayout);
 
-        load();
-        swipeRefreshLayout.setOnRefreshListener(this::load);
+        shimmerFrameLayout.startShimmer();
+        swipeRefreshLayout.setRefreshing(true);
+
+        viewModel.getProducts();
+        
+        swipeRefreshLayout.setOnRefreshListener( () -> {
+            viewModel.getProducts();
+        });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -86,14 +92,6 @@ public class ShowProductActivity extends AppCompatActivity {
 
 
         binding.executePendingBindings();
-    }
-
-
-    private void load() {
-        shimmerFrameLayout.startShimmer();
-        swipeRefreshLayout.setRefreshing(true);
-
-        viewModel.getProducts();
     }
 
     public void back(View view) { onBackPressed(); }
