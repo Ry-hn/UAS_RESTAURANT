@@ -71,36 +71,36 @@
                     android:queryHint="Search"></SearchView>
             </LinearLayout>
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmerLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
+                                <include layout="@layout/shimmer_layout"></include>
 
-                    <include layout="@layout/shimmer_layout"></include>
-                </LinearLayout>
+                                <include layout="@layout/shimmer_layout"></include>
+                            </LinearLayout>
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                        </com.facebook.shimmer.ShimmerFrameLayout>
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefresh"
@@ -117,6 +117,14 @@
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:onClick="@{showView::printPDF}"
+            android:text="PRINT PDF" />
 
     </RelativeLayout>
 </layout>
