@@ -34,28 +34,6 @@ public class RegisterViewModel extends ViewModel {
         repository.register(this.email.get(), this.name.get(), this.password.get(), this.telepon.get(), "USER");
     }
 
-    @BindingAdapter({"validation", "errorMsg"})
-    public static void setErrorEnable(final TextInputLayout txtLayout, final UserValidator.StringRule strRule, final String errorMsg) {
-        txtLayout.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (strRule.validate(txtLayout.getEditText().getText())) {
-                    txtLayout.setError(errorMsg);
-                } else {
-                    txtLayout.setError(null);
-                }
-            }
-        });
-    }
-
     public boolean isAllFieldInputted() {
         return !TextUtils.isEmpty(name.get()) &&
                 !TextUtils.isEmpty(email.get()) &&

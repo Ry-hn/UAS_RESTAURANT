@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                     case "421":
                         Toast.makeText(getApplication(), "Akun Belum diaktifkan", Toast.LENGTH_SHORT).show();
                         break;
+                    case "400":
                     case "401":
                         Toast.makeText(getApplication(), "Username / password salah", Toast.LENGTH_SHORT).show();
                         break;
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loadActivity(Class<?> clazz) {
-        Intent i = new Intent(LoginActivity.this,clazz);
+        Intent i = new Intent(LoginActivity.this, clazz);
         startActivity(i);
         finish();
     }

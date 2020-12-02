@@ -7,7 +7,7 @@
     <data>
 
         <import type="android.view.View" />
-
+        <import type="com.ryohandoko.restaurantuas.util.UserValidator" />
         <variable
             name="loginVM"
             type="com.ryohandoko.restaurantuas.viewmodel.LoginViewModel" />
@@ -79,6 +79,7 @@
                         android:layout_marginEnd="50dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/loginEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/hintEmail"
