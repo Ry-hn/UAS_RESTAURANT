@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ryohandoko.restaurantuas.R;
 import com.ryohandoko.restaurantuas.databinding.FragmentDetailProductBinding;
@@ -55,8 +56,12 @@ public class DetailProductFragment extends DialogFragment {
                     case "Retrieve Product Success":
                         loadData();
                         break;
+                    case "Update Product Success":
                     case "Delete Product Success":
                         dismiss();
+                        break;
+                    default:
+                        Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -65,6 +70,10 @@ public class DetailProductFragment extends DialogFragment {
         binding.executePendingBindings();
 
         return binding.getRoot();
+    }
+
+    public void BtnSave(View view) {
+        viewModel.saveProduct();
     }
 
     public void BtnHapus(View view) {

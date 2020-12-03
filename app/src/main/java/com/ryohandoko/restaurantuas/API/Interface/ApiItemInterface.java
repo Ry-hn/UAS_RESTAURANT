@@ -9,6 +9,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiItemInterface {
@@ -29,5 +30,11 @@ public interface ApiItemInterface {
     @DELETE("api/product/{id}")
     Call<ItemResponse> deleteProduct(@Path("id") String id);
 
-
+    @PUT("api/product/{id}")
+    @FormUrlEncoded
+    Call<ItemResponse> editProduct(@Path("id") String id,
+                                   @Field("nama_product") String nama,
+                                   @Field("deskripsi_product") String deskripsi,
+                                   @Field("harga_product") String harga,
+                                   @Field("gambar_product") String url);
 }

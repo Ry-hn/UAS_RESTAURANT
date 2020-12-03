@@ -62,7 +62,7 @@
                     android:hint="Nama Product">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:text="@{VM.nama}"
+                        android:text="@={VM.nama}"
                         android:layout_height="match_parent">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -76,7 +76,7 @@
                     android:hint="Deskripsi Product">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:text="@{VM.deskripsi}"
+                        android:text="@={VM.deskripsi}"
                         android:layout_height="match_parent">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -90,7 +90,7 @@
                     android:hint="Harga Product">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:text="@{VM.harga}"
+                        android:text="@={VM.harga}"
                         android:layout_height="match_parent">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -104,7 +104,7 @@
                     android:hint="Gambar Product">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:text="@{VM.url}"
+                        android:text="@={VM.url}"
                         android:layout_height="match_parent">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -131,7 +131,8 @@
                     android:backgroundTint="#00aa00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SAVE"/>
+                    android:onClick="@{view::BtnSave}"
+                    android:text="EDIT"/>
             </LinearLayout>
 
         </RelativeLayout>

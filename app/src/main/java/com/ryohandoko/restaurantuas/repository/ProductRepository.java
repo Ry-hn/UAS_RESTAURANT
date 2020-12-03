@@ -114,6 +114,27 @@ public class ProductRepository {
         });
     }
 
+    public void editProduct(String id, String nama, String deskripsi, String harga, String gambar) {
+        Call<ItemResponse> request = apiService.editProduct(id, nama, deskripsi, harga, gambar);
+
+        request.enqueue(new Callback<ItemResponse>() {
+            @Override
+            public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
+                if(response.code() == 200) {
+                    ProductLiveData.postValue(response.body().getItem());
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<ItemResponse> call, Throwable t) {
+                errorMessage.postValue("500");
+                Log.i("RETRIEVEPRODUCT", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
 
     public LiveData<String> getErrorMessage() { return errorMessage; }
     public LiveData<List<Item>> getListProductsLiveData() { return ListProductLiveData; }

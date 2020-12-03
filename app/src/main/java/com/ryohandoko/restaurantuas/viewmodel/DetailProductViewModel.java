@@ -28,6 +28,8 @@ public class DetailProductViewModel extends ViewModel {
         url = new ObservableField<>("");
     }
 
+    public void saveProduct() { repository.editProduct(id.get(), nama.get(), deskripsi.get(), harga.get(), url.get());}
+
     public void retrieveProduct(String id) {
         repository.getProductById(id);
     }
