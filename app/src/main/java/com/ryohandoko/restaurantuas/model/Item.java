@@ -4,6 +4,7 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
+import com.ryohandoko.restaurantuas.BR;
 
 public class Item extends BaseObservable {
 
@@ -44,9 +45,7 @@ public class Item extends BaseObservable {
         return deskripsi_product;
     }
 
-    public void setDeskripsi_product(String deskripsi_product) {
-        this.deskripsi_product = deskripsi_product;
-    }
+    public void setDeskripsi_product(String deskripsi_product) { this.deskripsi_product = deskripsi_product; }
 
     public String getHarga_product() {
         return harga_product;

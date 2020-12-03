@@ -48,6 +48,27 @@ public class PesananRepository {
         });
     }
 
+    public void getPesananUser(String idUser) {
+        Call<PesananResponse> request = apiService.getPesananUser(idUser);
+
+        request.enqueue(new Callback<PesananResponse>() {
+            @Override
+            public void onResponse(Call<PesananResponse> call, Response<PesananResponse> response) {
+                if(response.code() == 200) {
+                    listPesananLiveData.postValue(response.body().getListPesanan());
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<PesananResponse> call, Throwable t) {
+                t.printStackTrace();
+                errorMessage.postValue("500");
+            }
+        });
+
+    }
 
     public LiveData<String> getErrorMessage() {
         return errorMessage;

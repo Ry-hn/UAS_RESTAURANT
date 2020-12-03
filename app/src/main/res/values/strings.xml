@@ -21,6 +21,8 @@
     <string name="search_Product">Search Product</string>
     <string name="edit_produt">Edit Product</string>
 
+    <string name="Menu">Menu Makanan</string>
+
     <string name="SignIn">SIGN IN</string>
     <string name="SignUp">Belum Punya Akun? SIGN UP</string>
     <string name="register">REGISTER</string>

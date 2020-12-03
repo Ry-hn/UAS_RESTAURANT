@@ -30,23 +30,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp">
 
-                <ImageButton
-                    android:id="@+id/ibBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/ic_baseline_arrow_back_24"
-                    android:foreground="?android:attr/selectableItemBackground" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/show_list_product"
+                    android:text="@string/Menu"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
