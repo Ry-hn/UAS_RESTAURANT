@@ -56,6 +56,9 @@ public class PesananRepository {
             public void onResponse(Call<PesananResponse> call, Response<PesananResponse> response) {
                 if(response.code() == 200) {
                     listPesananLiveData.postValue(response.body().getListPesanan());
+
+//                    Log.i("TELOLETOM", "onResponse: " + listPesananLiveData.getValue().get(0).toString());
+
                     errorMessage.postValue(response.body().getMessage());
                 }
                 else errorMessage.postValue("400");
@@ -69,6 +72,47 @@ public class PesananRepository {
         });
 
     }
+
+    public void deletePesanan(String idPesanan) {
+        Call<PesananResponse> request = apiService.deletePesanan(idPesanan);
+
+        request.enqueue(new Callback<PesananResponse>() {
+            @Override
+            public void onResponse(Call<PesananResponse> call, Response<PesananResponse> response) {
+                if(response.code() == 200) {
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<PesananResponse> call, Throwable t) {
+                t.printStackTrace();
+                errorMessage.postValue("500");
+            }
+        });
+    }
+
+    public void updatePesanan(String idPesanan, String jml) {
+        Call<PesananResponse> request = apiService.updatePesanan(idPesanan, jml);
+
+        request.enqueue(new Callback<PesananResponse>() {
+            @Override
+            public void onResponse(Call<PesananResponse> call, Response<PesananResponse> response) {
+                if(response.code() == 200) {
+                    errorMessage.postValue(response.body().getMessage());
+                }
+                else errorMessage.postValue("400");
+            }
+
+            @Override
+            public void onFailure(Call<PesananResponse> call, Throwable t) {
+                t.printStackTrace();
+                errorMessage.postValue("500");
+            }
+        });
+    }
+
 
     public LiveData<String> getErrorMessage() {
         return errorMessage;

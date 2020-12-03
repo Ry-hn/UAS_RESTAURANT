@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ public class PesananFragment extends Fragment {
     private FragmentPesananBinding binding;
     private PesananFragmentViewModel viewModel;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private PesananAdapter adapter;
     private RecyclerView recyclerView;
 
@@ -36,22 +38,32 @@ public class PesananFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(PesananFragmentViewModel.class);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_pesanan, container, false);
 
+        binding.setView(this);
         binding.setVM(viewModel);
         binding.setLifecycleOwner(this);
+
+        swipeRefreshLayout = binding.getRoot().findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setRefreshing(true);
 
         recyclerView = binding.getRoot().findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         getData();
 
+        swipeRefreshLayout.setOnRefreshListener( () -> {
+            getData();
+        });
+
         viewModel.getErrorMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
+
+                swipeRefreshLayout.setRefreshing(false);
+
                 switch (s) {
                     case "Retrieve Pesanan Success":
 
                         adapter  = new PesananAdapter(viewModel.getListPesanan().getValue(), getContext());
                         recyclerView.setAdapter(adapter);
-
                         break;
                     default:
                         Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
@@ -72,8 +84,8 @@ public class PesananFragment extends Fragment {
         viewModel.getAllPesananUser(id);
     }
 
-    private void loadData() {
-
+    public void back(View view) {
+        getActivity().onBackPressed();
     }
 
 }
