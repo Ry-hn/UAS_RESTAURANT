@@ -112,12 +112,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         mapView.onSaveInstanceState(outState);
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mapView.onDestroy();
-        mapboxMap = null;
-        navigationMapRoute = null;
+//        mapView.onDestroy(); crash
     }
 
     @Override
