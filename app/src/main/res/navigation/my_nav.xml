@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.ryohandoko.restaurantuas.view.fragment.FavoriteFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_favorite" />
-
-    <fragment
         android:id="@+id/pesananFragment"
         android:name="com.ryohandoko.restaurantuas.view.fragment.PesananFragment"
         android:label="fragment_settings"

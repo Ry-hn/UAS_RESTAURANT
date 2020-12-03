@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.ryohandoko.restaurantuas.util.NotificationUtil;
-import com.ryohandoko.restaurantuas.view.fragment.FavoriteFragment;
 import com.ryohandoko.restaurantuas.view.fragment.HomeFragment;
 import com.ryohandoko.restaurantuas.view.fragment.MapFragment;
 import com.ryohandoko.restaurantuas.view.fragment.PesananFragment;
@@ -43,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.Fragment_Home :
                         fragment  = new HomeFragment(); break;
-                    case R.id.Fragment_Favorite:
-                        fragment = new FavoriteFragment(); break;
                     case R.id.Fragment_Profile:
                         fragment = new ProfileFragment(); break;
                     case R.id.Fragment_Pesanan:

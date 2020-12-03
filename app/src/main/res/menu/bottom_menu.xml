@@ -16,11 +16,6 @@
         android:title="@string/titleFragmentPesanan"/>
 
     <item
-        android:id="@+id/Fragment_Favorite"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="@string/titleFragmentFavorite" />
-
-    <item
         android:id="@+id/Fragment_Profile"
         android:icon="@drawable/ic_person"
         android:title="@string/titleFragmentProfile" />
