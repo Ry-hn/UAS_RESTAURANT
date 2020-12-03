@@ -22,7 +22,6 @@ public class Item extends BaseObservable {
     @SerializedName("gambar_product")
     private String gambar;
 
-
     @Bindable
     public String getId() {
         return id;

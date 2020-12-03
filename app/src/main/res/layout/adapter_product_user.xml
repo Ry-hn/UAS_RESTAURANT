@@ -29,15 +29,17 @@
 
                 <ToggleButton
                     android:id="@+id/toggleFav"
+                    style="@style/Widget.MyApp.MyButton"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="130dp" />
+                    android:layout_marginStart="130dp"
+                    android:background="@drawable/check" />
 
                 <ImageView
                     android:id="@+id/produtGambar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     app:ProfileImage="@{item.gambar}"
@@ -47,8 +49,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/produtGambar"
-                    android:layout_marginStart="20dp"
                     android:text="@{item.nama_product}"
+                    android:textAlignment="center"
                     tools:text="NAMA PRODUCT" />
             </RelativeLayout>
 

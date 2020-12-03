@@ -56,10 +56,22 @@ public class HomeFragment extends Fragment {
         swipeRefreshLayout = binding.getRoot().findViewById(R.id.swipeRefresh);
 
         swipeRefreshLayout.setRefreshing(true);
-
         load();
-
         swipeRefreshLayout.setOnRefreshListener(this::load);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
 
         viewModel.getErrorMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
