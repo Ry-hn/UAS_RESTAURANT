@@ -1,4 +1,4 @@
-package com.ryohandoko.restaurantuas.viewmodel;
+package com.ryohandoko.restaurantuas;
 
 import android.app.Application;
 
@@ -6,6 +6,7 @@ import com.ryohandoko.restaurantuas.API.ApiClient;
 import com.ryohandoko.restaurantuas.API.Interface.ApiUserInterface;
 import com.ryohandoko.restaurantuas.API.Response.UserResponse;
 import com.ryohandoko.restaurantuas.util.InputValidator;
+import com.ryohandoko.restaurantuas.viewmodel.LoginViewModel;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ import retrofit2.Response;
 
 import static org.junit.Assert.*;
 
-public class LoginViewModelTest {
+public class LoginTest {
 
     private LoginViewModel vm;
 

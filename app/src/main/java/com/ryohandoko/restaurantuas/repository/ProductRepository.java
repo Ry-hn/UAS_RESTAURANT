@@ -53,7 +53,7 @@ public class ProductRepository {
         });
     }
 
-    public void createProduct(String nama, String deskripsi, String harga, String url) {
+    public LiveData<String> createProduct(String nama, String deskripsi, String harga, String url) {
         Call<ItemResponse> request = apiService.createProduct(nama, deskripsi, harga, url);
 
         request.enqueue(new Callback<ItemResponse>() {
@@ -70,6 +70,8 @@ public class ProductRepository {
                 errorMessage.postValue("500");
             }
         });
+
+        return errorMessage;
     }
 
     public void getProductById(String id) {
