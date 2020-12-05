@@ -59,12 +59,10 @@ public class DetailProductUser extends DialogFragment {
             @Override
             public void onChanged(String s) {
                 switch (s) {
+                    case "Tambah Jumlah Pesan Berhasil":
                     case "Add Pesanan Success":
                         Toast.makeText(getContext(), "Pesanan berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                         dismiss();
-                        break;
-                    default:
-                        Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

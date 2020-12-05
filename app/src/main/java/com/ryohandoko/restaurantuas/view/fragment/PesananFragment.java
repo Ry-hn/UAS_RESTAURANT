@@ -65,9 +65,8 @@ public class PesananFragment extends Fragment {
                         adapter  = new PesananAdapter(viewModel.getListPesanan().getValue(), getContext());
                         recyclerView.setAdapter(adapter);
                         break;
-                    default:
-                        Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
-                        break;
+                    case "Data tidak ditemukan":
+                        Toast.makeText(getContext(), "Pesanan Masih Kosong", Toast.LENGTH_SHORT).show();
                 }
             }
         });

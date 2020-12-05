@@ -26,7 +26,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         createUser = findViewById(R.id.cvCreateuser);
         createProduct = findViewById(R.id.cvCreateProduct);
         showUser = findViewById(R.id.cvShowListUser);
-        showProduct = findViewById(R.id.cvShowListProduct);
+        showProduct = findViewById(R.id.tampilProduct);
 
         createUser.setOnClickListener(this);
         createProduct.setOnClickListener(this);
@@ -43,7 +43,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()) {
             case R.id.cvCreateuser: loadActivity(CreateUserActivity.class); break;
             case R.id.cvCreateProduct: loadActivity(CreateProductActivity.class); break;
-            case R.id.cvShowListProduct: loadActivity(ShowProductActivity.class); break;
+            case R.id.tampilProduct: loadActivity(ShowProductActivity.class); break;
         }
     }
 }

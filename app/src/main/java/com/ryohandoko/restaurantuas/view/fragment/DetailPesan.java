@@ -46,9 +46,6 @@ public class DetailPesan extends DialogFragment {
                         dismiss();
                         Toast.makeText(getContext(), "Berhasil", Toast.LENGTH_SHORT).show();
                         break;
-                    default:
-                        Toast.makeText(getContext(), "Kesalahan Jaringan", Toast.LENGTH_SHORT).show();
-                        break;
                 }
             }
         });
