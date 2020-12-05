@@ -1,5 +1,6 @@
 package com.ryohandoko.restaurantuas.viewmodel;
 
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -9,6 +10,8 @@ import com.ryohandoko.restaurantuas.repository.PesananRepository;
 import java.util.List;
 
 public class PesananFragmentViewModel  extends ViewModel {
+
+    private ObservableField<Boolean> isLoaded = new ObservableField<>(false);
 
     private PesananRepository repository;
 
@@ -28,4 +31,11 @@ public class PesananFragmentViewModel  extends ViewModel {
         return repository.getErrorMessage();
     }
 
+    public ObservableField<Boolean> getIsLoaded() {
+        return isLoaded;
+    }
+
+    public void setIsLoaded(boolean isLoaded) {
+        this.isLoaded.set(isLoaded);
+    }
 }

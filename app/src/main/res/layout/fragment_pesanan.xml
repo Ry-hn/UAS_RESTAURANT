@@ -6,9 +6,9 @@
 
     <data>
 
-                <variable
-                    name="view"
-                    type="com.ryohandoko.restaurantuas.view.fragment.PesananFragment" />
+        <variable
+            name="view"
+            type="com.ryohandoko.restaurantuas.view.fragment.PesananFragment" />
 
         <variable
             name="VM"
@@ -70,5 +70,16 @@
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{VM.isLoaded}"
+            android:onClick="@{view::cetak}"
+            android:text="Cetak Pesanan"
+            android:backgroundTint="#45b6fe"/>
+
     </RelativeLayout>
 </layout>
