@@ -5,8 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.DialogFragment;;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -20,7 +19,6 @@ import com.ryohandoko.restaurantuas.R;
 import com.ryohandoko.restaurantuas.databinding.FragmentDetailProductBinding;
 import com.ryohandoko.restaurantuas.model.Item;
 import com.ryohandoko.restaurantuas.viewmodel.DetailProductViewModel;
-import com.ryohandoko.restaurantuas.viewmodel.ProfileViewModel;
 
 public class DetailProductFragment extends DialogFragment {
 

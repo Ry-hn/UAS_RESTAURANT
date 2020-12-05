@@ -1,6 +1,5 @@
 package com.ryohandoko.restaurantuas.viewmodel;
 
-import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 

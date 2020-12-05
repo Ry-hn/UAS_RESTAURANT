@@ -4,7 +4,6 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
-import com.ryohandoko.restaurantuas.BR;
 
 public class Item extends BaseObservable {
 

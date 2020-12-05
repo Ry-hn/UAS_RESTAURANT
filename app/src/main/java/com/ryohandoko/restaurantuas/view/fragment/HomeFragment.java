@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -16,14 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
-import com.ryohandoko.restaurantuas.Adapter.ItemAdapter;
 import com.ryohandoko.restaurantuas.Adapter.ItemUserAdapter;
 import com.ryohandoko.restaurantuas.R;
 import com.ryohandoko.restaurantuas.databinding.FragmentHomeBinding;
 import com.ryohandoko.restaurantuas.model.Item;
-import com.ryohandoko.restaurantuas.view.admin.ShowProductActivity;
 import com.ryohandoko.restaurantuas.viewmodel.HomeViewModel;
-import com.ryohandoko.restaurantuas.viewmodel.ShowProductViewModel;
 
 import java.util.List;
 

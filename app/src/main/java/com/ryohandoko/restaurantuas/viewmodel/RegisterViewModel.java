@@ -1,18 +1,12 @@
 package com.ryohandoko.restaurantuas.viewmodel;
 
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.material.textfield.TextInputLayout;
-
 import com.ryohandoko.restaurantuas.repository.RegisterRepository;
-import com.ryohandoko.restaurantuas.util.UserValidator;
 
 public class RegisterViewModel extends ViewModel {
 

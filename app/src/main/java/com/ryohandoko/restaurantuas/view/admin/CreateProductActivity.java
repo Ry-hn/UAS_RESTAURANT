@@ -3,7 +3,6 @@ package com.ryohandoko.restaurantuas.view.admin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import com.ryohandoko.restaurantuas.R;
 import com.ryohandoko.restaurantuas.databinding.ActivityCreateProductBinding;
 import com.ryohandoko.restaurantuas.viewmodel.CreateProductViewModel;
-import com.ryohandoko.restaurantuas.viewmodel.LoginViewModel;
 
 public class CreateProductActivity extends AppCompatActivity {
 

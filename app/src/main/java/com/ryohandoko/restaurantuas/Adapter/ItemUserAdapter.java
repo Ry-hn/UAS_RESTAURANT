@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ryohandoko.restaurantuas.databinding.AdapterProductUserBinding;
 import com.ryohandoko.restaurantuas.model.Item;
-import com.ryohandoko.restaurantuas.view.admin.DetailProductFragment;
 import com.ryohandoko.restaurantuas.view.fragment.DetailProductUser;
 
 

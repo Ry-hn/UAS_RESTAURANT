@@ -31,6 +31,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
+
+// kalau error coba enabled developer option, matiin window animation scale, transition animation scale, animator duration scale
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class HapusPesanan {

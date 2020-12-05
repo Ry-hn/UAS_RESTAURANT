@@ -2,14 +2,11 @@ package com.ryohandoko.restaurantuas;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.ryohandoko.restaurantuas.repository.ProductRepository;
 import com.ryohandoko.restaurantuas.view.admin.CreateProductActivity;
 import com.ryohandoko.restaurantuas.view.admin.CreateUserActivity;
 import com.ryohandoko.restaurantuas.view.admin.ShowProductActivity;
