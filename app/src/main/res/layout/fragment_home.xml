@@ -36,7 +36,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
                     android:text="@string/Menu"
-                    android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>

@@ -2,11 +2,13 @@ package com.ryohandoko.restaurantuas;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -25,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences sp = getSharedPreferences("SECRET", MODE_PRIVATE);
+
+        if(sp.getBoolean("tema", false))
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -71,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean loadFragment(Fragment fragment) {
         if(fragment != null) {
             //R.id.fragment = fragment container di
-
-//            getSupportFragmentManager().popBackStack();
 
             getSupportFragmentManager()
                     .beginTransaction()

@@ -1,5 +1,9 @@
 package com.ryohandoko.restaurantuas.view.fragment;
 
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,6 +15,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
@@ -51,7 +56,6 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
 
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
         binding.setLifecycleOwner(this);
         binding.setProfileVM(viewModel);
@@ -87,9 +91,6 @@ public class ProfileFragment extends Fragment {
         viewModel.setTelepon(user.getTelepon());
         viewModel.setGambar(user.getGambar());
     }
-
-
-
 
     @Override
     public void onResume() {
@@ -216,5 +217,27 @@ public class ProfileFragment extends Fragment {
         Intent i = new Intent(getActivity(), LoginActivity.class);
         getActivity().startActivity(i);
         getActivity().finish();
+    }
+
+    public void executeOnChange(View view) {
+
+        sp = getActivity().getSharedPreferences("SECRET", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        if(viewModel.getIsSwitchChecked().get()) {
+            Log.i("BLABLA", "executeOnChange: dark mode");
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+            editor.putBoolean("tema", true);
+        }
+        else {
+            Log.i("BLABLA", "executeOnChange: light mode");
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("tema", false);
+        }
+
+        editor.apply();
+        getActivity().finish();
+        startActivity(getActivity().getIntent());
     }
 }

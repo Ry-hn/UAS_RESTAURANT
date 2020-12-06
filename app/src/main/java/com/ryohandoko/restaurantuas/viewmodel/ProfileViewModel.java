@@ -26,6 +26,9 @@ public class ProfileViewModel extends AndroidViewModel {
     private final ObservableField<String> telepon = new ObservableField<>("");
     private final ObservableField<Boolean> isLoading = new ObservableField<>(false);
 
+    //theme
+    private final ObservableField<Boolean> isSwitchChecked;
+
     private String token, id;
 
     public ProfileViewModel(Application app) {
@@ -35,6 +38,9 @@ public class ProfileViewModel extends AndroidViewModel {
 
         token = sp.getString("token", "");
         id = sp.getString("id", "");
+
+        boolean themeState = sp.getBoolean("tema", false);
+        isSwitchChecked = new ObservableField<>(themeState);
 
         repository.getUser(token);
     }
@@ -93,4 +99,8 @@ public class ProfileViewModel extends AndroidViewModel {
     public LiveData<String> getErrorMessage() { return repository.getErrorMessage(); }
     public LiveData<User> getUserLiveData() { return repository.getUserMutableLiveData(); }
 
+    public ObservableField<Boolean> getIsSwitchChecked() { return isSwitchChecked; }
+    public void setIsSwitchChecked(boolean statement) {
+        this.isSwitchChecked.set(statement);
+    }
 }

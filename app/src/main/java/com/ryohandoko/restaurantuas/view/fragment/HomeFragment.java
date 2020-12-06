@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private HomeViewModel viewModel;
     private List<Item> listItem;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,13 +60,15 @@ public class HomeFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                adapter.getFilter().filter(s);
+                if(adapter != null)
+                    adapter.getFilter().filter(s);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
+                if(adapter != null)
+                    adapter.getFilter().filter(s);
                 return false;
             }
         });
@@ -77,7 +81,6 @@ public class HomeFragment extends Fragment {
 
                 switch (s) {
                     case "Retrieve All Success":
-
 
                         listItem = viewModel.getProductsLiveData().getValue();
 
@@ -97,7 +100,4 @@ public class HomeFragment extends Fragment {
     private void load() {
         viewModel.loadData();
     }
-
-
-
 }
